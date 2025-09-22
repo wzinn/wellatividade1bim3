@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class personagem : MonoBehaviour
+public class inimigo : MonoBehaviour
 {
 
     [SerializeField]private int vida;
