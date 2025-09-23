@@ -1,53 +1,54 @@
-using UnityEditor;
+using System;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-public class bala : MonoBehaviour
+public class Bala : MonoBehaviour
 {
     [SerializeField] private int dano;
-
     [SerializeField] private float velocidade;
-    
+
     public void setDano(int dano)
     {
         this.dano = dano;
     }
 
-    
     public int getDano()
     {
-        return this.dano; 
+        return this.dano;
     }
-    //
-    
-    public void setVelocidade(int velocidade)
+
+    public void setVelocidade(float velocidade)
     {
         this.velocidade = velocidade;
     }
 
-    
     public float getVelocidade()
     {
-        return this.velocidade; 
+        return this.velocidade;
     }
-    
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        // transform.Translate(Vector3.right * velocidade * Time.deltaTime);
+        // transform.Translate( new Vector3(velocidade * Time.deltaTime,0,0));
+        transform.position += new Vector3(velocidade * Time.deltaTime,0,0);
     }
-    
-    private void onCollisionEnter2D(Collision2D other)
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        int novavida = other.gameObject.GetComponent<bala>().getDano();
-        other.gameObject.GetComponent<bala>().setDano(novavida);
+        if (other.gameObject.CompareTag("Inimigo"))
+        {
+            int novaVida = 
+                other.gameObject.GetComponent<Personagem>().getVida() 
+                - getDano();
+            other.gameObject.GetComponent<Personagem>().setVida(novaVida);
+        }
+
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
-  
-    //GameObject.setActive(false)
 }

@@ -1,40 +1,36 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Personagem
 {
-    public float velocidade = 5f;  // Define a velocidade do jogador
-
-    // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        // Movimento para a esquerda (A)
+        //movimento para a esquerda
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= new Vector3(velocidade * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(getVelocidade() * Time.deltaTime, 0, 0);  
         }
 
-        // Movimento para a direita (D)
+        //movimento para a direita
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(velocidade * Time.deltaTime, 0, 0);
+            transform.position += new Vector3(getVelocidade() * Time.deltaTime, 0, 0);  
         }
-
-        // Movimento para frente (W)
+        
+        //movimento para a Cima
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0, 0, velocidade * Time.deltaTime);
+            transform.position += new Vector3(0, getVelocidade() * Time.deltaTime, 0);  
         }
-
-        // Movimento para trás (S)
+        
+        //movimento para a Cima
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= new Vector3(0, 0, velocidade * Time.deltaTime);
+            transform.position -= new Vector3(0, getVelocidade() * Time.deltaTime, 0);  
         }
+
     }
 }

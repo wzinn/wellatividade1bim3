@@ -1,49 +1,17 @@
+
 using UnityEngine;
 
-public class inimigo : MonoBehaviour
+public class Inimigo : Personagem
 {
-
-    [SerializeField]private int vida;
-    [SerializeField]private int energia;
-    [SerializeField]private float velocidade;
-
-    public void setvida(int vida)
+    void Start()
     {
-        this.vida = vida;
+        
     }
-
-
-
-    public int getvida()
+    void Update()
     {
-        return vida;
+        if (getVida() <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
-    //
-    
-    public void setenergia(int energia)
-    {
-        this.energia = energia;
-    }
-
-
-
-    public int getenergia()
-    {
-        return energia;
-    }
-    
-    //
-    
-    public void setvelocidade(int energia)
-    {
-        this.velocidade = energia;
-    }
-    
-    
-    public int getvelocidade()
-    {
-        return vida;
-    }
-
-
 }
