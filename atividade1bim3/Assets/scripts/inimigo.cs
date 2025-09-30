@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Inimigo : Personagem
 {
+    [SerializeField]
     void Start()
     {
         
