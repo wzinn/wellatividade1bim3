@@ -10,13 +10,28 @@ public class Arma : MonoBehaviour
     
     private Camera camera;
     public GameObject cursor;
-    void Start()
+  void Start()
     {
         camera = Camera.main;
     }
-    void Update()
+   void Update()
     {
          
+        if (gameObject.transform.rotation.eulerAngles.z > -90 
+            && gameObject.transform.rotation.eulerAngles.z < 90)
+        {
+            transform.localScale = new Vector3(1 , 1, 1);
+        }
+        
+        if (gameObject.transform.rotation.eulerAngles.z > 90 
+            && gameObject.transform.rotation.eulerAngles.z < 270)
+        {
+            transform.localScale = new Vector3( 1, -1, 1);
+        }
+
+
+        
+        
         // Distância da câmera ao objeto. Precisamos disso para fazer o cálculo correto.
         float camDis = camera.transform.position.y - transform.position.y;
 
